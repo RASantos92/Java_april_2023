@@ -32,5 +32,16 @@ public class Test{
         dev1.addProject(project1);
         dev1.displayStatus();
 
+
+        System.out.println("Dev count: " + Developer.getDevCount());
+
+        //240000
+        dev1.setSalary(140000);
+
+        //260000
+        System.out.println("total salary from all devs : " + Developer.getTotalSalary());
+
+        System.out.println("total number of projects Devs are working on: " + Developer.getTotalProjects());
+
     }
 }

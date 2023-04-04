@@ -4,13 +4,21 @@ public class Developer{
     private String name;
     private int workingHours;
     private double salary;
+
+    // Static Variables
+    private static int devCount;
+    private static double totalSalary;
+    private static int totalProjects;
+
     public ArrayList<String> languages;
     public ArrayList<Project> projects;
+
 
     //------------------ constructors ----------------------
     public Developer(){
         this.languages = new ArrayList<String>();
         this.projects = new ArrayList<Project>();
+        Developer.devCount++;
     }
 
     public Developer(String name, int workingHours, double salary){
@@ -19,6 +27,8 @@ public class Developer{
         this.salary = salary;
         this.languages = new ArrayList<String>();
         this.projects = new ArrayList<Project>();
+        Developer.devCount++;
+        Developer.totalSalary += salary;
     }
 
     //------------------ other class methods ----------------------
@@ -34,6 +44,7 @@ public class Developer{
     }
     
     public void addProject(Project project){
+        Developer.totalProjects++;
         this.projects.add(project);
     }
 
@@ -60,6 +71,22 @@ public class Developer{
     }
 
     public void setSalary(double salary){
+        Developer.totalSalary -= this.salary;
+        Developer.totalSalary += salary;
         this.salary = salary;
+    }
+
+
+    // Static methods
+    public static int getDevCount(){
+        return devCount;
+    }
+
+    public static double getTotalSalary(){
+        return Developer.totalSalary;
+    }
+
+    public static int getTotalProjects(){
+        return Developer.totalProjects;
     }
 }
